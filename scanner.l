@@ -1,7 +1,23 @@
 %{
 #include "tokens.h"
 
+
+int Running = 1;
+int Lines = 1;
+
+
+int getLineNumber();
+int isRunning();
+void printLineNumber();
+
 %}
+
+TOKEN_ID      [a-z0-9_]+
+SPECIAL [-,;:\(\)\[\]\{\}+*/<>=]
+CHAR    '[^']'
+STRING  \"[^"\n]*\"
+INT     [0-9]+
+FLOAT   [0-9]*[.][0-9]+$
 
 %%
 
@@ -21,6 +37,9 @@
 "&"				return TK_OC_AND;
 "|" 			return TK_OC_OR; 
 "->" 			return TK_OC_MAP;
+
+[\n]        {Lines++;}
+[\t]        {/* Do nothing */ }
 
 %%
 
