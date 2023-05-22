@@ -1,3 +1,4 @@
+%option noyywrap
 %option yylineno
 
 %{
@@ -52,10 +53,5 @@ FALSE   "false"
 %%
 
 int get_line_number() {
-	return Lines;
-}
-
-int yywrap()
-{
-    return 1;
+	return yylineno;
 }
