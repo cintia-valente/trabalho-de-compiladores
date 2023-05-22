@@ -11,7 +11,7 @@ int getLineNumber();
 %}
 
 TOKEN_ID      [a-z0-9_]+
-SPECIAL [-!*/%+-<>{}()=,;]
+SPECIAL [-,;:!*(\)\[\]\{\}+/<>=]
 CHAR    '[^']'
 STRING  \"[^"\n]*\"
 INT     [0-9]+
@@ -53,4 +53,10 @@ FALSE   "false"
 
 int get_line_number() {
 	return Lines;
+}
+
+int yywrap()
+{
+    Running = 0;
+    return 1;
 }
