@@ -21,7 +21,6 @@ FALSE   "false"
 
 %%
 
-/* Palavras reservadas */
 "int" 		{ return TK_PR_INT; }
 "float" 	{ return TK_PR_FLOAT; }
 "bool" 		{ return TK_PR_BOOL; }
@@ -30,17 +29,15 @@ FALSE   "false"
 "while" 	{ return TK_PR_WHILE; }
 "return"	{ return TK_PR_RETURN; }
 
-/* Literais */
 {INT}     { return TK_LIT_INT; }
 {FLOAT}   { return TK_LIT_FLOAT; }
 {TRUE}    { return TK_LIT_TRUE; }
 {FALSE}   { return TK_LIT_FALSE; }
 
-/* Caracteres especiais */
+
 {SPECIAL} { return yytext[0]; }
 
 
-/* Caracteres compostos */
 "<="			return TK_OC_LE;
 ">="			return TK_OC_GE;
 "=="			return TK_OC_EQ;
@@ -49,8 +46,7 @@ FALSE   "false"
 "|" 			return TK_OC_OR; 
 "->" 			return TK_OC_MAP;
 
-/* Conta linhas e ignora espaços */
-[\n]        {Lines++;}
+[\n]        { Lines++; }
 [ \t]+      {/* Skips blanks and tabs */ }
 
 %%
