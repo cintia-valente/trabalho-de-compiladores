@@ -8,7 +8,7 @@
 #
 
 etapa1: lex.yy.o main.o
-	gcc -o etapa1 lex.yy.o main.o
+	gcc lex.yy.o main.o -o etapa1 -lfl
 main.o: main.c
 	gcc -c main.c
 lex.yy.o: lex.yy.c
