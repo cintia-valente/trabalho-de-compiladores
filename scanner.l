@@ -7,8 +7,6 @@ int Lines = 1;
 
 
 int getLineNumber();
-int isRunning();
-void printLineNumber();
 
 %}
 
@@ -39,10 +37,10 @@ FLOAT   [0-9]*[.][0-9]+$
 "->" 			return TK_OC_MAP;
 
 [\n]        {Lines++;}
-[\t]        {/* Do nothing */ }
+[ \t]+      {/* Skips blanks and tabs */ }
 
 %%
 
 int get_line_number() {
-	return 1;
+	return Lines;
 }
