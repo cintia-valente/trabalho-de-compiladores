@@ -1,5 +1,7 @@
 %option noyywrap
 %option yylineno
+%x MULTI_LINE_COMMENT
+%x SINGLE_LINE_COMMENT
 
 %{
 #include "tokens.h"
@@ -35,6 +37,8 @@ FALSE   "false"
 {TRUE}    { return TK_LIT_TRUE; }
 {FALSE}   { return TK_LIT_FALSE; }
 
+{TOKEN_ID} { return TK_IDENTIFICADOR; }
+
 
 {SPECIAL} { return yytext[0]; }
 
@@ -49,6 +53,16 @@ FALSE   "false"
 
 [\n]        { Lines++; }
 [ \t]+      {/* Skips blanks and tabs */ }
+
+.			{ return TK_ERRO; }
+
+<INITIAL>"//"                   BEGIN(SINGLE_LINE_COMMENT);
+<SINGLE_LINE_COMMENT>"\n"       BEGIN(INITIAL);
+<SINGLE_LINE_COMMENT>.|"\n"     { /* do nothing */ }
+
+<INITIAL>"/*"        BEGIN(MULTI_LINE_COMMENT);
+<MULTI_LINE_COMMENT>"*/"        BEGIN(INITIAL);
+<MULTI_LINE_COMMENT>.|"\n"     { /* do nothing */ }
 
 %%
 
