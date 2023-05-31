@@ -1,11 +1,8 @@
 #
 # UFRGS - Compiladores - Etapa 1
+# Cleiber Rodrigues e Cintia Valente
 #
 # Makefile for single compiler call
-# All source files must be included from code embedded in scanner.l
-# In our case, you probably need #include "hash.c" at the beginning
-# and #include "main.c" in the last part of the scanner.l
-#
 
 etapa1: lex.yy.o main.o
 	gcc lex.yy.o main.o -o etapa1 -lfl
