@@ -1,3 +1,6 @@
+/* Trabalho de Compiladores - Cleiber Rodrigues e Cintia Valente */
+/* Cartões: 00270139 */
+
 %option noyywrap
 %option yylineno
 %x MULTI_LINE_COMMENT

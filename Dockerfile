@@ -1,3 +1,6 @@
+# /* Trabalho de Compiladores - Cleiber Rodrigues e Cintia Valente */
+# /* Cartões: 00270139 */
+
 FROM debian:testing
 
 RUN apt-get -y update
