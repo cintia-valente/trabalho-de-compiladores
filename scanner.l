@@ -51,7 +51,7 @@ FALSE   "false"
 "|" 			return TK_OC_OR; 
 "->" 			return TK_OC_MAP;
 
-[\n]        { Lines++; }
+[\n]        {  }
 [ \t]+      {/* Skips blanks and tabs */ }
 
 .			{ return TK_ERRO; }
