@@ -1,5 +1,5 @@
 /* Trabalho de Compiladores - Cleiber Rodrigues e Cintia Valente */
-/* Cartões: 00270139 */
+/* Cartões: 00270139 - 00228540 */
 
 %option noyywrap
 %option yylineno
@@ -9,15 +9,12 @@
 %{
 #include "tokens.h"
 
-int Lines = 1;
-
-
 int getLineNumber();
 
 %}
 
-TOKEN_ID      [a-z0-9_]+
-SPECIAL [-,;:!*(\)\[\]\{\}+/<>=%–]
+TOKEN_ID  (?:[a-z]*|_)
+SPECIAL [-,;!*(\)\{\}+/<>=%–]
 CHAR    '[^']'
 STRING  \"[^"\n]*\"
 INT     [0-9]+
